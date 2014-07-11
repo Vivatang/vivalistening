@@ -1,0 +1,25 @@
+package com.viva.vivalistening;
+
+import android.util.Log;
+
+public class Utility {
+
+	static final boolean m_bOutput = true;
+
+	static public void logInfo(String strLog) {
+		if (m_bOutput == false) {
+			return;
+		}
+
+		Log.i("[VivaListening]", strLog);
+
+	}
+
+	static public void logError(String strErr) {
+		if (m_bOutput == false) {
+			return;
+		}
+
+		Log.e("[VivaListening]", strErr);
+	}
+}

@@ -1,0 +1,51 @@
+package com.viva.vivalistening;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class Args {
+	
+	Map<String,Object> m_map = new HashMap<String,Object>();
+	
+	public void add(String key, Object val){
+		m_map.put(key, val);
+	}
+	
+	public boolean containKey(String key){
+		return m_map.containsKey(key);
+	}
+	
+	public String getValueToString(String key){
+		if(containKey(key) == false){
+			return null;
+		}
+		
+		return (String)(m_map.get(key));
+	}
+	
+	public Object getValueToObject(String key){
+		if(containKey(key) == false){
+			return null;
+		}
+		return m_map.get(key);
+	}
+	
+	public int getValueToInt(String key){
+		int val = (Integer)m_map.get(key);
+		return val;
+	}
+	
+	public float getValueToFloat(String key){
+		float val = (Float)m_map.get(key);
+		return val;
+	}
+	
+	public double getValueToDouble(String key){
+		double val = (Double)m_map.get(key);
+		return val;
+	}
+	
+	public Map<String,Object> getMap(){
+		return m_map;
+	}
+}

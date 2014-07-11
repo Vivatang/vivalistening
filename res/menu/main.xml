@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_refresh"
+        android:icon="@drawable/refresh"
+        android:showAsAction="always"
+     />
+     <item
+        android:id="@+id/menu_time"
+        android:icon="@drawable/time"
+        android:showAsAction="always"
+     />
+</menu>

@@ -1,0 +1,109 @@
+package com.viva.vivalistening.data;
+
+import java.io.File;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+
+import com.viva.vivalistening.data.ListeningItem;
+import com.viva.vivalistening.Args;
+import com.viva.vivalistening.Defs;
+import com.viva.vivalistening.Utility;
+
+public class DataSerializationFromFile implements IDataSerialization{
+
+	IDataSource m_dataSource = null;
+	
+	@Override
+	public void setDataSource(IDataSource dataSource) {
+		// TODO Auto-generated method stub
+		m_dataSource = dataSource;
+	}
+
+	@Override
+	public boolean load(Args args) {
+		// TODO Auto-generated method stub
+		
+		assert(m_dataSource != null);
+		String strFile = args.getValueToString(Defs.VALUE_FILE);
+		assert(strFile != null);
+		File file = new File(strFile);
+		if(file.exists() == false){
+			Utility.logError(strFile + "don't exist!");
+			return false;
+		}
+		
+		try{
+			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder builder = factory.newDocumentBuilder();
+			Document doc = builder.parse(file);
+			
+			NodeList ns = doc.getElementsByTagName(Defs.TAG_TOTAL_TIME);
+			if(ns.getLength() != 1){
+				Utility.logError("error happen in totaltime element");
+				return false;
+			}
+			
+			Element el = (Element)(ns.item(0));
+			int nTotalTime = Integer.parseInt(el.getTextContent());
+			m_dataSource.setTotalTime(nTotalTime);
+			
+			ns = doc.getElementsByTagName(Defs.TAG_LISTENING_INFO);
+			if(ns.getLength() != 1){
+				Utility.logError("error happen in listeninginfo element");
+				return false;
+			}
+			loadListeningItems((Element)(ns.item(0)));
+			
+			ns = doc.getElementsByTagName(Defs.TAG_DAY_TIME_INFO);
+			if(ns.getLength() != 1){
+				Utility.logError("error happen in durationinfo element");
+				return false;
+			}
+			loadDayTimeItems((Element)(ns.item(0)));
+				
+		}
+		catch(Exception ex){
+			Utility.logError(ex.getMessage());
+		}
+		
+		return true;
+	}
+
+	@Override
+	public boolean save(Args args) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	void loadListeningItems(Element el){
+		NodeList ns = el.getElementsByTagName(Defs.TAG_ITEM);
+		for(int i = 0 ; i < ns.getLength() ; i++){
+			Element item = (Element)ns.item(i);
+			ListeningItem info = new ListeningItem();
+			info.m_id = item.getAttribute(Defs.TAG_LISTENING_ITEM_ID);
+			info.m_strTitle = item.getAttribute(Defs.TAG_LISTENING_ITEM_TITLE);
+			info.m_strSummary = item.getAttribute(Defs.TAG_LISTENING_ITEM_SUMMARY);
+			info.m_nTotalTime = Integer.parseInt(item.getAttribute(Defs.TAG_LISTENING_ITEM_TOTAL_TIME));
+			m_dataSource.addListeningItem(info);
+		}
+	}
+	
+	void loadDayTimeItems(Element el){
+		NodeList ns = el.getElementsByTagName(Defs.TAG_ITEM);
+		for(int i = 0 ; i < ns.getLength() ; i++){
+			Element item = (Element)ns.item(i);
+			DayTimeItem info = new DayTimeItem();
+			int year = Integer.parseInt(item.getAttribute(Defs.TAG_DAY_TIME_ITEM_YEAR));
+			int month = Integer.parseInt(item.getAttribute(Defs.TAG_DAY_TIME_ITEM_MONTH));
+			int day = Integer.parseInt(item.getAttribute(Defs.TAG_DAY_TIME_ITEM_DAY));
+			info.m_nTotalTime = Integer.parseInt(item.getAttribute(Defs.TAG_DAY_TIME_ITEM_TOTAL_TIME));
+			m_dataSource.addDayTimeItem(info);
+		}
+	}
+
+}

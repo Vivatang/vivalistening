@@ -1,0 +1,7 @@
+package com.viva.vivalistening.data;
+
+public interface IDataSerialization {
+	void setDataSource(DataManager dataSource);
+	boolean load();
+	boolean save();
+}

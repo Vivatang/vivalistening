@@ -1,0 +1,52 @@
+package com.viva.vivalistening.data;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class DataManager implements IDataSource{
+	int m_nTotalTime = 0;
+	List<DayTimeItem> m_dayTimeArray = new ArrayList<DayTimeItem>();
+	List<ListeningItem> m_listeningArray = new ArrayList<ListeningItem>();
+
+	public int getTotalTime(){
+		return m_nTotalTime;
+	}
+	
+	public void setTotalTime(int nTotalTime){
+		m_nTotalTime = nTotalTime;
+	}
+	
+	public int getDayTimeItemCount(){
+		return m_dayTimeArray.size();
+	}
+	
+	public DayTimeItem getDayTimeItem(int index){
+		if(index >= m_dayTimeArray.size()){
+			return null;
+		}
+		return m_dayTimeArray.get(index);
+	}
+	
+	
+	public void addDayTimeItem(DayTimeItem item){
+		m_dayTimeArray.add(item);
+	}
+	
+	public int getListeningItemCount(){
+		return m_listeningArray.size();
+	}
+	
+	public ListeningItem getListeningItem(int index){
+		if(index >= m_listeningArray.size()){
+			return null;
+		}
+		return m_listeningArray.get(index);
+	}
+	
+	
+	public void addListeningItem(ListeningItem item){
+		m_listeningArray.add(item);
+	}
+	
+}

@@ -1,0 +1,12 @@
+package com.viva.vivalistening.data;
+
+import java.util.Calendar;
+
+public class ListeningItem {
+	public String m_id = "";
+	public String m_strTitle = "";
+	public String m_strSummary = "";
+	public int m_nTotalTime = 0;
+	public int m_nDayTime = 0;
+	public Calendar m_currentDate = null;
+}

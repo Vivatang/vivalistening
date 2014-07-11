@@ -1,0 +1,9 @@
+package com.viva.vivalistening.data;
+
+import com.viva.vivalistening.Args;
+
+public interface IDataSerialization {
+	void setDataSource(IDataSource dataSource);
+	boolean load(Args args);
+	boolean save(Args args);
+}

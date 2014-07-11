@@ -1,0 +1,13 @@
+body{
+	font-size:19px;
+	margin-top:0px;
+}
+
+.listening-paragraph-div{
+	margin-top:0px;
+	margin-bottom:15px;
+}
+
+.listening-selected{
+	color:rgb(0,0,255);
+}

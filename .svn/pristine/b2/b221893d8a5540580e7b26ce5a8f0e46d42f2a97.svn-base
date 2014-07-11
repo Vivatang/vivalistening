@@ -1,0 +1,47 @@
+package com.viva.vivalistening.data;
+
+
+public class DataManager {
+	int m_nTotalTime = 0;
+
+	public int getTotalTime(){
+		return m_nTotalTime;
+	}
+	
+	public void setTotalTime(int nTotalTime){
+		m_nTotalTime = nTotalTime;
+	}
+	
+	public int getDayTimeItemCount(){
+		return 0;
+	}
+	
+	public DayTimeItem getDayTimeItem(int index){
+		return null;
+	}
+	
+	
+	public void addDayTimeItem(DayTimeItem item){
+		
+	}
+	
+	public int getListeningItemCount(){
+		return 0;
+	}
+	
+	public ListeningItem getListeningItem(int index){
+		return null;
+	}
+	
+	
+	public void addListeningItem(ListeningItem item){
+		
+	}
+	
+	
+	
+	
+	
+	
+
+}

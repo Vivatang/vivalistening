@@ -1,0 +1,8 @@
+package com.viva.vivalistening.data;
+
+import java.util.Calendar;
+
+public class DayTimeItem {
+	public Calendar m_date = null;
+	public int m_nTotalTime = 0;
+}

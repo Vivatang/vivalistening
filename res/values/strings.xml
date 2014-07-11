@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">听听看</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+     <string name="title_bar_listening_list">我的列表</string>
+    <string name="title_bar_total_time_list">学习时间</string>
+    <string name="title_bar_total_volume_list">卷册列表</string>
+    <string name="week_1">星期天</string>
+    <string name="week_2">星期一</string>
+    <string name="week_3">星期二</string>
+    <string name="week_4">星期三</string>
+    <string name="week_5">星期四</string>
+    <string name="week_6">星期五</string>
+    <string name="week_7">星期六</string>
+    <string name="hour">小时</string>
+    <string name="min">分</string>
+    <string name="sec">秒</string>
+    <string name="count">共计:</string>
+    <string name="btn_ok">确定</string>
+    <string name="btn_cancel">取消</string>
+    <string name="exit_prompt">再按一次退出听听看</string>
+    <string name="loading">正在导入中...</string>
+    <string name="search_word_exps">释义</string>
+    <string name="search_word_sents">例句</string>
+</resources>
