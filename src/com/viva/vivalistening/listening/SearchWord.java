@@ -185,7 +185,7 @@ public class SearchWord {
 			}
 
 			// 单词中文解释,中文解释是和单词的属性一一对应的
-			nl = doc.getElementsByTagName(Defs.TAG_POS);
+			nl = doc.getElementsByTagName(Defs.TAG_ACCEPTATION);
 			// 如果解释的条目数量和单词属性数量不一致，则非法
 			if (nl.getLength() != wordInfo.expArray.size()) {
 				throw new Exception("the count of the pos must be more than 0");

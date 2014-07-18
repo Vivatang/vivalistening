@@ -8,6 +8,7 @@ import com.viva.vivalistening.data.DataSerialization;
 import com.viva.vivalistening.detect.Detect;
 import com.viva.vivalistening.listening.CommandAdjustVolume;
 import com.viva.vivalistening.listening.CommandPlayAudio;
+import com.viva.vivalistening.listening.CommandTranslation;
 import com.viva.vivalistening.listening.NotifyListeningTimer;
 import com.viva.vivalistening.listening.NotifyLoadPage;
 import com.viva.vivalistening.listlistening.CommandRefresh;
@@ -66,6 +67,11 @@ public class VivaListeningApp extends Application {
 		
 		cmd = new CommandSwitchToDayTimePage();
 		CommandManager.m_instance.addCommand(R.id.title_bar_main_time, cmd);
+		
+		cmd = new CommandTranslation();
+		CommandManager.m_instance.addCommand(R.id.title_bar_learning_translation, cmd);
+		CommandManager.m_instance.addCommand(R.id.listening_text_search_btn, cmd);
+		CommandManager.m_instance.addCommand(R.id.listening_text_search_text, cmd);
 		
 		
 	}

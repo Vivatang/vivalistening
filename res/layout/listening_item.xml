@@ -43,6 +43,7 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:text="02:35"
+                android:background="#ff0000ff"
                 android:textColor="#FF000000"
                 android:textSize="13sp"
                 android:textStyle="bold" />

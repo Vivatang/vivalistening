@@ -41,6 +41,7 @@ public class Defs {
 	public static final String VALUE_Y = "y";
 	public static final String VALUE_TEMP_TOTAL_TIME = "temp_total_time";
 	public static final String VALUE_RESULT = "result";
+	public static final String VALUE_WORD = "word";
 	
 	
 	public static final String JSON_TITLE = "[title]";

@@ -2,47 +2,83 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#FFFFFFFF" >
-     
-     <LinearLayout
-            android:id="@+id/listening_text_total_time_bar"
-            android:layout_width="fill_parent"
+    android:background="#FFFFFFFF"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/listening_text_total_time_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="15dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:src="@drawable/headphones" />
+
+        <TextView
+            android:id="@+id/listening_text_total_time"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
             android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="15dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal" >
+            android:text="00:00:00"
+            android:textColor="#FF000000"
+            android:textSize="16sp" />
+    </LinearLayout>
 
-            <ImageView
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:src="@drawable/headphones" />
+    
 
-            <TextView
-                android:id="@+id/listening_text_total_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:text="00:00:00"
-                android:textColor="#FF000000"
-                android:textSize="16sp" />
-        </LinearLayout>
+    <WebView
+        android:id="@+id/listening_text"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/listening_text_total_time_bar"
+        android:layout_weight="1" />
 
-        <WebView
-            android:id="@+id/listening_text"
-            android:layout_below="@id/listening_text_total_time_bar"
-            android:layout_weight="1"
+    <include
+        android:id="@+id/listenig_search_word"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        layout="@layout/view_search_word" />
+    
+    <LinearLayout
+        android:id="@+id/listening_text_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/gradient_title_bar"
+        android:gravity="center"
+        android:visibility="gone"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/listening_text_search_text"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent" />
-        
-        <include
-            android:id="@+id/listenig_search_word"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            layout="@layout/view_search_word" />
-        
-        
+            android:layout_height="30dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="5dp"
+            android:background="#ffffffff"
+            android:textColor="#ff000000"
+            android:singleLine="true"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/listening_text_search_btn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/ic_action_search"
+            android:scaleType="fitCenter"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp" 
+            />
+    </LinearLayout>
+
 </LinearLayout>

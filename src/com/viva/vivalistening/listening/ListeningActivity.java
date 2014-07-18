@@ -1,9 +1,29 @@
 package com.viva.vivalistening.listening;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import org.json.JSONArray;
+import android.annotation.SuppressLint;
+import android.app.ActionBar;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.telephony.PhoneStateListener;
+import android.telephony.TelephonyManager;
+import android.util.TypedValue;
+import android.view.GestureDetector;
+import android.view.Gravity;
+import android.view.KeyEvent;
+import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+import android.widget.LinearLayout;
+import android.widget.TabHost;
+import android.widget.TabWidget;
+import android.widget.TextView;
 
 import com.viva.vivalistening.Defs;
 import com.viva.vivalistening.ICommandActivity;
@@ -14,39 +34,7 @@ import com.viva.vivalistening.commands.CommandManager;
 import com.viva.vivalistening.data.DataManager;
 import com.viva.vivalistening.data.DataSerialization;
 import com.viva.vivalistening.data.ListeningItem;
-import com.viva.vivalistening.listlistening.MainActivity;
 import com.viva.vivalistening.playaudio.PlayAudio;
-import com.viva.vivalistening.processtext.ProcessText;
-
-import android.annotation.SuppressLint;
-import android.app.ActionBar;
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.ProgressDialog;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.os.Handler;
-import android.telephony.PhoneStateListener;
-import android.telephony.TelephonyManager;
-import android.util.TypedValue;
-import android.view.GestureDetector;
-import android.view.Gravity;
-import android.view.KeyEvent;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.ViewGroup;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
-import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
-import android.widget.Spinner;
-import android.widget.TabHost;
-import android.widget.TabWidget;
-import android.widget.TextView;
 
 public class ListeningActivity extends Activity implements INotify,
 		ICommandActivity {
@@ -105,7 +93,8 @@ public class ListeningActivity extends Activity implements INotify,
 		initializeGesture();
 		//initializePsSpinner();
 		initializeTabHost();
-
+		intializeViews();
+		
 		TextView tv = (TextView) findViewById(R.id.listening_text_total_time);
 		tv.setText(Utility.getTotalTime(item.m_nTempTotalTime));
 
@@ -154,6 +143,11 @@ public class ListeningActivity extends Activity implements INotify,
 		v = view.findViewById(R.id.title_bar_learning_translation);
 		v.setTag(R.id.title_bar_learning_translation);
 		v.setOnClickListener(m_click);
+		
+		v = findViewById(R.id.listening_text_search_btn);
+		v.setTag(R.id.listening_text_search_btn);
+		v.setOnClickListener(m_click);
+		
 	}
 
 	@Override
@@ -366,20 +360,34 @@ public class ListeningActivity extends Activity implements INotify,
 			tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
 		}
 
-// tmp code
-//		ViewGroup vg = (ViewGroup) findViewById(R.id.search_word_exps);
-//
-//		TextView tv = new TextView(this);
-//		tv.setTextColor(Color.BLACK);
-//		tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
-//		tv.setText("n. 好的更身高多少的撒旦撒大声地");
-//		vg.addView(tv);
-//
-//		tv = new TextView(this);
-//		tv.setTextColor(Color.BLACK);
-//		tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
-//		tv.setText("adj. 会让他和红红\r\n拖后腿然后");
-//		vg.addView(tv);
-
 	}
+	
+	void intializeViews(){
+		
+		findViewById(R.id.listening_text_search_text).setTag(R.id.listening_text_search_text);
+		findViewById(R.id.listening_text_search_text).setOnKeyListener(new View.OnKeyListener() {
+			
+			@Override
+			public boolean onKey(View v, int keyCode, KeyEvent event) {
+				// TODO Auto-generated method stub
+				if( event.getKeyCode() == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_UP){
+					m_click.onClick(v);
+				}
+				return false;
+			}
+		});
+		
+	   findViewById(R.id.listenig_search_word).setOnClickListener(new View.OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {
+			// TODO Auto-generated method stub
+			v.setVisibility(View.GONE);
+		}
+	});
+
+		
+	}
+	
+	
 }

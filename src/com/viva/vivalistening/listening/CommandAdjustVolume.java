@@ -14,6 +14,7 @@ public class CommandAdjustVolume extends Command{
 	@Override
 	public void execute(Bundle arg, ICommandActivity activity) {
 		// TODO Auto-generated method stub
+		
 		int x = arg.getInt(Defs.VALUE_X);
 		int y = arg.getInt(Defs.VALUE_Y);
 		if(Math.abs(y) > Math.abs(x)){
